@@ -52,7 +52,7 @@ const Poster = () => {
     <div className="absolute inset-0 bg-black bg-opacity-50"></div>
     <div className="relative space-y-4 p-4">
       <h1 className="text-2xl font-bold">20% Off On Tank Tops</h1>
-      <p>
+      <p className="max-w-xs md:max-w-sm text-lg leading-relaxed">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac dictum.
       </p>
       <button className="bg-white text-black w-fit px-5 py-2">Shop Now</button>
@@ -63,7 +63,7 @@ const Poster = () => {
     <div className="absolute inset-0 bg-black bg-opacity-50"></div>
     <div className="relative space-y-4 p-4">
       <h1 className="text-2xl font-bold">Latest Eyewear For You</h1>
-      <p>
+      <p className="max-w-xs md:max-w-sm text-lg leading-relaxed">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac dictum.
       </p>
       <button className="bg-white text-black w-fit px-5 py-2">Shop Now</button>
@@ -74,13 +74,14 @@ const Poster = () => {
     <div className="absolute inset-0 bg-black bg-opacity-50"></div>
     <div className="relative space-y-4 p-4">
       <h1 className="text-2xl font-bold">Let's Lorem Suit Up!</h1>
-      <p>
+      <p className="max-w-xs md:max-w-sm text-lg leading-relaxed">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac dictum.
       </p>
       <button className="bg-white text-black w-fit px-5 py-2">Shop Now</button>
     </div>
   </div>
 </div>
+
 
   );
 };

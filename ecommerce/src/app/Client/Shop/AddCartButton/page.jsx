@@ -69,7 +69,7 @@
 "use client";
 import React from "react";
 import { useSession, signIn } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button"; // Assuming you have a Button component
 
 const Buttonn = ({ product, quantity, size }) => {

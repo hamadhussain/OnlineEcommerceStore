@@ -4,19 +4,15 @@ import { useState, useEffect, useRef } from "react";
 import SheetDemo from "../../AddCart/page";
 import CartMenu from "../../Menu/page";
 import { GiSleevelessJacket } from "react-icons/gi";
+import {namesLink} from '@/app/Utils'
+import { FcSearch } from "react-icons/fc";
 
 const Navbar = () => {
   const [inputValue, setInputValue] = useState("");
   const [inputFocus, setFocus] = useState(false);
   const dropdownRef = useRef(null);
 
-  const names = [
-    { name: "James", link: "/" },
-    { name: "John", link: "/john" },
-    { name: "Paul", link: "/paul" },
-    { name: "Ringo", link: "/ringo" },
-    { name: "George", link: "/george" },
-  ];
+  const names = namesLink
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -46,7 +42,9 @@ const Navbar = () => {
         <nav className="flex  justify-between items-center bg-white p-4 border-b border-gray-300">
           <div className="flex items-center gap-5">            
             <Link href="/">
-            <h1 className="text-black text-xl font-bold">M.J</h1></Link>
+            <h1 className="text-black text-xl font-bold flex items-center  gap-2">
+            <GiSleevelessJacket className="border-2 text-3xl rounded-full" />
+              M.J</h1></Link>
             <Link href="/Client/Shop/Jackets">
               <p className="uppercase hover:border-b-2 transition-all duration-700 border-0">
                 Leather-Jackets
@@ -61,17 +59,17 @@ const Navbar = () => {
 
           <div className="flex items-center  gap-4 relative">
             <Link href="/login">
-              <button className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
+              <button className="bg-blue-500 text-white p-1 px-2 rounded hover:bg-blue-600">
                 Login
               </button>
             </Link>
             <input
-              className="border border-gray-300 h-10 p-2 rounded mr-2"
+              className="border border-gray-300 h-8 p-1 px-2 rounded mr-2"
               id="textInput"
               type="text"
               value={inputValue}
               onChange={handleChange}
-              placeholder="Search..."
+              placeholder="Search Products..."
               onFocus={() => setFocus(true)}
             />
             {inputFocus && inputValue && (
