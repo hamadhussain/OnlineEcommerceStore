@@ -14,9 +14,10 @@ import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import { invoices } from "@/app/Utils";
 
-const invoices = invoices
 
 export default function TableDemo() {
+  const invoices = invoices
+
     return (
       <>
         <div className="p-24">
