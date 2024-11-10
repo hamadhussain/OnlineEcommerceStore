@@ -39,7 +39,7 @@ const Navbar = () => {
   return (
     <>
       <div className="hidden lg:block">
-        <nav className="flex  justify-between items-center bg-white p-4 border-b border-gray-300">
+        <nav className="flex  justify-between items-center bg-white p-4 borderb border-gray-300">
           <div className="flex items-center gap-5">            
             <Link href="/">
             <h1 className="text-black text-xl font-bold flex items-center  gap-2">

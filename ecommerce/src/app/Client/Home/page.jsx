@@ -10,7 +10,7 @@ import { GrContact } from "react-icons/gr";
 import Navigation from "../../Client/Home/Navigation/page";
 import SheetDemo from "../AddCart/page";
 import Menu from "../Menu/page";
-import { Link as LInkk } from "react-scroll";
+import Header from "./Header/page";
 
 export default function Home() {
   const [message, setMessage] = useState(false);
@@ -117,55 +117,43 @@ export default function Home() {
           </div>
         </div>
       </div> */}
-      <div className="body flex justify-around items- flex-col">
-        <div
+      <div className="bdy flex justify-around items- flex-col">
+        {/* <div
           className={`absolute inset-0 bg-black transition-all duration-700 ${
             message ? "bg-opacity-50" : "bg-opacity-10"
           }`}
-        ></div>
-        <div className="lg:block hidden">
-          <header className="flex  backdrop-brightness-95 py-10 text-white z-20 bg-whte bg-fxed fied w-scree items-center justify-between px-6 border-gray-200">
+        ></div> */}
+        <div className="lg:block hidden  text-wite ">
+          <header className="flex bg-gadient-to-br from-red-700 to-red-300 navb  backdrop-brightnes py-4 text-whte z-20 bg-whte bg-fxed fied w-scree items-center justify-between px-6 ">
             <div className="gap-11 flex items-center">
-              <div className="flex items-center italic gap-1 text-3xl">
-                <GiSleevelessJacket className="border-4 rounded-full" />
-                <p className="companylogo italic">M.J</p>
+              <div className="flex items-center  gap-1 text3xl">
+              <Link href="/">
+            <h1 className="text- text-xl font-bold flex items-center  gap-2">
+            <GiSleevelessJacket className="border-2 text-3xl rounded-full" />
+              M.J</h1>
+              </Link> 
               </div>
               <nav className="hidden md:flex space-x-12 uppercase">
-                <Navigation />{" "}
-                {/* <Link className=" transition-all duration-75 hover:opacity-85  border-0 hover:border-b-2" href="/Client/Men"> For Men</Link>
-              <Link className=" transition-all duration-75 hover:opacity-85  border-0 hover:border-b-2" href="/clothing"> For Women</Link> */}
-              </nav>
+                <Navigation />  </nav>
             </div>
 
             <div className="flex items-center space-x-6">
-              {/* <Link className="" href="/about">
-                <FcAbout className="text-4xl" />
-              </Link>
-              <Link className="" href="/contact">
-                <GrContact className="text-3xl" />
-              </Link> */}
-              {/* <input
-              type="text"
-              placeholder="Search ..."
-              className="w-full p-2 pl-3 rounded-md bg-white border-none focus:outline-none"
-            />
-             */}
 
               <div className="flex items-center  gap-4 relative">
-                <Link href="/login">
-                  <button className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">
-                    Login
-                  </button>
-                </Link>
-                <input
-                  className="border border-gray-300 h-10 p-2 rounded mr-2"
-                  id="textInput"
-                  type="text"
-                  value={inputValue}
-                  onChange={handleChange}
-                  placeholder="Search..."
-                  onFocus={() => setFocus(true)}
-                />
+              <Link href="/login">
+              <button className="bg-blue-500 text-white p-1 px-2 rounded hover:bg-blue-600">
+                Login
+              </button>
+            </Link>
+            <input
+              className="border-b border-gray-300 h-8 p-1 px-2 py-1 rounded mr-2"
+              id="textInput"
+              type="text"
+              value={inputValue}
+              onChange={handleChange}
+              placeholder="Search Products..."
+              onFocus={() => setFocus(true)}
+            />
                 {inputFocus && inputValue && (
                   <div
                     ref={dropdownRef}
@@ -187,7 +175,7 @@ export default function Home() {
                   </div>
                 )}
               </div>
-              <SheetDemo color={"white"} />
+              <SheetDemo color={""} />
             </div>
           </header>
         </div>
@@ -204,7 +192,9 @@ export default function Home() {
             </div>
           </header>
         </div>
-        <div className="h-screen overflow-hidden text-white flex flex-col brightness-200 relative px-4 lg:px-36 space-y-4 items-cener justify-center">
+
+<Header/>
+        {/* <div className="h-screen overflow-hidden text-white flex flex-col brightness-200 relative px-4 lg:px-36 space-y-4 items-cener justify-center">
           <h1 className="text-4xl md:text-7xl lg:text-8xl w-full md:w-[700px] font-bold mb-4 leading-relaxed text-center md:text-start">
             Raining Offers For Winter!
           </h1>
@@ -230,7 +220,10 @@ export default function Home() {
             </Link>
             
           </div>
-        </div>
+        </div> */}
+
+
+
       </div>
 
       <div className="  z-10">

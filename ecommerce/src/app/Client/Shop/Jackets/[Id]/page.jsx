@@ -19,7 +19,7 @@ const ProductDetailPage = ({ params }) => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ productName: jacket }), // Sending the id as part of the body
+          body: JSON.stringify({ productName: jacket }), 
         });
         const data = await response.json();
         let id=params.Id
@@ -29,6 +29,7 @@ const ProductDetailPage = ({ params }) => {
         if (response.ok) {
           setProduct(data[id-1]); 
         } else {
+          
           setError(data.error || "Something went wrong."); 
         }
       } catch (error) {
@@ -162,7 +163,7 @@ const ProductDetailPage = ({ params }) => {
               </button>
             </div>
 
-            <Buttonn product={product} quantity={quantity} size={size} />
+            <Buttonn productID={product} quantity={quantity} size={size} />
           </div>
         </>
       ) : (
