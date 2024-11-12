@@ -268,7 +268,7 @@ const Header = () => {
                   >
                     {/* <div className="embla__slide__number">                        */}
                     <Image
-                      src={`/jacket${index +1}.png`}
+                      src={`/Images/jacket${index +1}.png`}
                       className="embla__slide__number i kl "
                       alt="image"
                       width={700}
