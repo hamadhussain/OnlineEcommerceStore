@@ -7,8 +7,8 @@ const ProductCard = ({ price, src, title ,linkname}) => (
   <div className=" bordergray-200  orde rounded-lg p-14 flex flex-col justify-center  items-cente w- overflow-0 ">
     <Image
       src={`/${src}.png`}
-      alt={title}
       className="w-96 rounded-lg border-4 bg-slate-100  p-7 h-96 "
+      alt={title}
       width={300}
       height={200}
     />
