@@ -55,7 +55,7 @@ let Hoody="Hoody"
     <div className="h-full md:h-screen flex justify-center items-center left-1/2 top-1/2 w-full">
       <div className="flex flex-col md:flex-row relative top-44 md:top-8 justify-center items-center w-screen gap-7 md:gap-10 lg:gap-24">
         <Image
-          src={`/${Hoody}${params.Id}.png`} 
+          src={`/jacket1.png`} 
           alt={product.title}
           className="w-full max-w-xs md:max-w-md lg:max-w-lg rounded-lg border-4 bg-slate-100 p-4"
           width={300}
