@@ -4,13 +4,28 @@ import Link from "next/link";
 import { MdAddShoppingCart } from "react-icons/md";
 import { ProductDetailData } from "@/app/Utils";
 
-const product = ProductDetailData
-console.log(product);
 
-const ProductCard = ({ price, src, title ,linkname}) => (
-  <div className=" bordergray-200  orde rounded-lg p-14 flex flex-col justify-center  items-cente w- overflow-0 ">
+
+// const ProductCard = ({ price, src, title ,linkname}) => 
+//   return<>  ></>
+//   (
+
+// );
+
+// export default ProductCard;
+
+// import React from 'react'
+
+const ProductCard = ({ price, src, title ,linkname}) => {
+  const product = ProductDetailData
+console.log(product);
+console.log(src);
+
+  return (
+    <div className=" bordergray-200  orde rounded-lg p-14 flex flex-col justify-center  items-cente w- overflow-0 ">
     <Image
       src={`/Images/${src}.png`}
+      overrideSrc={`/Images/${src}.png`} 
       className="w-96 rounded-lg border-4 bg-slate-100  p-7 h-96 "
       alt={title}
       width={300}
@@ -28,6 +43,7 @@ const ProductCard = ({ price, src, title ,linkname}) => (
       </Button></Link>
     </div>
   </div>
-);
+  )
+}
 
-export default ProductCard;
+export default ProductCard
