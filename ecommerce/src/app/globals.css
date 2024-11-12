@@ -191,15 +191,15 @@ h1,button{
 }
 
 .post1{
-  background-image: url("/post1.jpg");
+  background-image: url("/Images/post1.jpg");
   background-size: cover;
 }
 .post2{
-  background-image: url("/post2.jpg");
+  background-image: url("/Images/post2.jpg");
   background-size: cover;
 }
 .post3{
-  background-image: url("/post3.jpg");
+  background-image: url("/Images/post3.jpg");
   background-size: cover;
 }
 #grad {
