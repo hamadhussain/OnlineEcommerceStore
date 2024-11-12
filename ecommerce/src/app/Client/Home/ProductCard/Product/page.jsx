@@ -10,7 +10,7 @@ console.log(product);
 const ProductCard = ({ price, src, title ,linkname}) => (
   <div className=" bordergray-200  orde rounded-lg p-14 flex flex-col justify-center  items-cente w- overflow-0 ">
     <Image
-      src={`./Images/${src}.png`}
+      src={`./Images/jacket2.png`}
       className="w-96 rounded-lg border-4 bg-slate-100  p-7 h-96 "
       alt={title}
       width={300}
