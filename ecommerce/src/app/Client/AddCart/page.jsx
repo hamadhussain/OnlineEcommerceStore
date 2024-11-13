@@ -141,7 +141,7 @@ const handleSubmit = async () => {
     <Sheet>
       <SheetTrigger asChild>
         <Button
-          variant="outline"
+          variant="none"
           className={`
             text-${color} 
             hover:text-${color} 

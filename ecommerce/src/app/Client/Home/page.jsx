@@ -181,14 +181,14 @@ export default function Home() {
         </div>
         <div className="lg:hidden block">
           {" "}
-          <header className="flex  backdrop-brightness-95 py-10 text-white z-20 bg-whte bg-fxed fied w-scree items-center justify-between px-6 border-gray-200">
+          <header className="flex  backdrop-brightness95 py-10 text-black z-20 bg-whte bg-fxed fied w-scree items-center justify-between px-6 borer-gray-200">
             <div className="flex items-center italic gap-1 text-3xl">
               <GiSleevelessJacket className="border-4 rounded-full" />
               <p className="companylogo italic">M.J</p>
             </div>
             <div className=" flex items-center gap-4">
-              <SheetDemo color={"white"} />
-              <Menu color={"white"} />
+              <SheetDemo color={"none"} />
+              <Menu color={"none"} />
             </div>
           </header>
         </div>

@@ -162,7 +162,7 @@ export default function Menu({ color }) {
     <Sheet>
       <SheetTrigger asChild>
         <Button
-          variant="outline"
+          variant="none"
           className={`
             text-${color} 
             hover:text-${color} 
