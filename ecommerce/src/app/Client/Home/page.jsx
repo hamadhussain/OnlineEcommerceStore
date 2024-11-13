@@ -57,7 +57,8 @@ export default function Home() {
     name.toLowerCase().includes(inputValue.toLowerCase())
   );
   return (
-    <div className=" overflo-hidden">
+    <div className=" overflo-hidden bg-gradient-to-r from-green-50 via-teal-50 to-aqua-100
+">
       {/* <div className="body  ">
         <div
           className={`absolute inset-0 bg-black transition-all duration-700 ${

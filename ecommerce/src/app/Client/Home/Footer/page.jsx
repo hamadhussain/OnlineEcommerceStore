@@ -296,7 +296,7 @@ const Footer = () => {
           </p>
         </div>
       </section> */}
-<section className="flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-5 bg-gray-100 text-black py-20 px-4">
+<section className="flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-5 bordwer-t bg-gray50 text-black py-20 px-4">
   <div className="flex justify-center items-center flex-col text-center">
     <h1 className="text-5xl">
       <TiWorldOutline />

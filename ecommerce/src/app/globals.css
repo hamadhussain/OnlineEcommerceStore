@@ -455,6 +455,13 @@ h1,button{
 
 }
 
+.kll{
+  /* filter: drop-shadow(3px 16px 14px black); */
+    filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.3));
+
+
+}
+
 .navb{
   /* box-shadow: 0px -97px 108px 21px; */
 

@@ -23,14 +23,15 @@ console.log(src);
 
   return (
     <div className=" bordergray-200  orde rounded-lg p-14 flex flex-col justify-center  items-cente w- overflow-0 ">
-    <Image
+    <div className="w-96 rounded-lg border-4 bg-slate-100  p-7 h-96 "> <Image
       src={`/Images/${src}.png`}
       overrideSrc={`/Images/${src}.png`} 
-      className="w-96 rounded-lg border-4 bg-slate-100  p-7 h-96 "
+      className="kll"
       alt={title}
       width={300}
       height={200}
-    />
+    /></div>
+   
     <div className="p-4 flex justify-between ">
       <div className=" space-y-2 text-">
         <h3 className="text-lg font-semibold uppercase">{title}</h3>
