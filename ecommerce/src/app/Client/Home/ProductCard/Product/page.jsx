@@ -4,26 +4,14 @@ import Link from "next/link";
 import { MdAddShoppingCart } from "react-icons/md";
 import { ProductDetailData } from "@/app/Utils";
 
-
-
-// const ProductCard = ({ price, src, title ,linkname}) => 
-//   return<>  ></>
-//   (
-
-// );
-
-// export default ProductCard;
-
-// import React from 'react'
-
 const ProductCard = ({ price, src, title ,linkname}) => {
-  const product = ProductDetailData
-console.log(product);
-console.log(src);
+//   const product = ProductDetailData
+// console.log(product);
+// console.log(src);
 
   return (
     <div className=" bordergray-200  orde rounded-lg p-14 flex flex-col justify-center  items-cente w- overflow-0 ">
-    <div className="w-96 rounded-lg border-4 bg-slate-100  p-7 h-96 "> <Image
+    <div className="w-96 rounded-lg border-4 bg-gra-100  p-7 h-96 "> <Image
       src={`/Images/${src}.png`}
       overrideSrc={`/Images/${src}.png`} 
       className="kll"

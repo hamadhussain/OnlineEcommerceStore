@@ -58,11 +58,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center  gap-4 relative">
-            <Link href="/login">
-              <button className="bg-blue-500 text-white p-1 px-2 rounded hover:bg-blue-600">
-                Login
-              </button>
-            </Link>
+          <SheetDemo />
             <input
               className="border border-gray-300 h-8 p-1 px-2 rounded mr-2"
               id="textInput"

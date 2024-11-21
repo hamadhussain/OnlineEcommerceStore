@@ -3,13 +3,16 @@ import React, { useState, useEffect } from "react";
 import Buttonn from "../../AddCartButton/page";
 import Image from "next/image";
 import Loader from "@/app/Client/Loader/page";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";  // Import Tabs components
 
 const ProductDetailPage = ({ params }) => {
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("Medium");
   const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true); 
-  const [error, setError] = useState(null); 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [pricee, setPrice] = useState(0);  // State for calculated price
+
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
@@ -18,95 +21,179 @@ const ProductDetailPage = ({ params }) => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ productName: Hoody }), // Sending the id as part of the body
-        });        const data = await response.json();
-        let id=params.Id
-  console.log(data[id-1]);
+          body: JSON.stringify({ productName: "Hoody" }), // Fetching hoodie data
+        });
 
-  
+        const data = await response.json();
+        const id = params.Id;
+
         if (response.ok) {
-          setProduct(data[id-1]); 
+          setProduct(data[id - 1]);  // Assuming the product array is indexed by 1
         } else {
-          setError(data.error || "Something went wrong."); 
+          setError(data.error || "Something went wrong.");
         }
       } catch (error) {
         setError("Error fetching product details.");
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
-    fetchProductDetails(); // Call the function to fetch data
+    fetchProductDetails();
   }, [params.id]);
+
+  // Calculate price whenever product or quantity changes
+  useEffect(() => {
+    if (product) {
+      const price = product.price * quantity;
+      setPrice(price);
+    }
+  }, [product, quantity]);
+
   const increaseQuantity = () => setQuantity((prev) => prev + 1);
   const decreaseQuantity = () => {
     if (quantity > 1) setQuantity((prev) => prev - 1);
   };
 
-  // Handle size selection
   const handleSizeChange = (event) => setSize(event.target.value);
-let Hoody="Hoody"
-  // Show loading state or error
+
   if (loading) {
-    return <div className=" h-screen flex  justify-center items-center"><Loader/></div>;
+    return <div className="h-screen flex justify-center items-center"><Loader /></div>;
+  }
+
+  if (error) {
+    return <div className="h-screen flex justify-center items-center text-red-500">{error}</div>;
   }
 
   return (
-    <div className="h-full md:h-screen flex justify-center items-center left-1/2 top-1/2 w-full">
+    <div className="h-full md:h-screen flex justify-center items-center w-screen">
       <div className="flex flex-col md:flex-row relative top-44 md:top-8 justify-center items-center w-screen gap-7 md:gap-10 lg:gap-24">
         <Image
-          src={`./Images/${Hoody}${params.Id}.PNG`} 
+          src={`/Images/Hoody${params.Id}.PNG`}
           alt={product.title}
-          className="w-full max-w-xs md:max-w-md lg:max-w-lg rounded-lg border-4 bg-slate-100 p-4"
+          className="w-full max-w-xs md:max-w-md lg:max-w-xl rounded-lg border-4 bg-slate-100 p-4"
           width={300}
           height={400}
           priority
         />
+        
         {product ? (
-          <>
-            {" "}
-            <div className="ml-8 py-4 flex flex-col justify-center w-96">
-              <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
-              <h2 className="text-md mb-4">
-                Price: <span className="underline">{product.price}</span>
-              </h2>
-              <p className="mb-4">{product.description}</p>
+          <div className="ml-8 py-4 flex flex-col justify-center w-96">
+            <h1 className="text-4xl font-bold mb-2 mt-4 underline">{product.title}</h1>
 
-              <div className="mb-4">
-                <label className="block mb-2 font-semibold">Size:</label>
-                <select
-                  value={size}
-                  onChange={handleSizeChange}
-                  className="border rounded px-4 py-2"
-                >
-                  <option value="Small">Small</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Large">Large</option>
-                  <option value="X-Large">X-Large</option>
-                </select>
-              </div>
+            <Tabs defaultValue="description">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="description">Description</TabsTrigger>
+                <TabsTrigger value="reviews">Reviews</TabsTrigger>
+              </TabsList>
 
-              <div className="flex items-center mb-4">
-                <button
-                  onClick={decreaseQuantity}
-                  className="border rounded-l px-4 py-2"
-                >
-                  -
-                </button>
-                <span className="px-4">{quantity}</span>
-                <button
-                  onClick={increaseQuantity}
-                  className="border rounded-r px-4 py-2"
-                >
-                  +
-                </button>
-              </div>
+              <TabsContent value="description">
+                <div className="py-4">
+                  <p className="mb-4">{product.description}</p>
 
-              <Buttonn product={product} quantity={quantity} size={size} />
-            </div>
-          </>
+                  <div className="mb-4">
+                    <label className="block mb-2 font-semibold">Size:</label>
+                    <select
+                      value={size}
+                      onChange={handleSizeChange}
+                      className="border rounded px-4 py-2"
+                    >
+                      <option value="Small">Small</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Large">Large</option>
+                      <option value="X-Large">X-Large</option>
+                    </select>
+                  </div>
+
+                  <div className="flex items-center mb-4">
+                    <button
+                      onClick={decreaseQuantity}
+                      className="border rounded-l px-4 py-2"
+                    >
+                      -
+                    </button>
+                    <span className="px-4">{quantity}</span>
+                    <button
+                      onClick={increaseQuantity}
+                      className="border rounded-r px-4 py-2"
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  <h2 className="mb-4">
+                    Price: <span className="text-2xl opacity-50">${pricee}</span>
+                  </h2>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="reviews">
+                <div className="py-4">
+                  <span className="font-bold text-lg mb-2">Reviews</span>
+                  {product.reviews?.totalReviews > 0 ? (
+                    <>
+                      <div className="mb-4">
+                        <h3 className="text-xl font-semibold">
+                          Average Rating: {product.reviews.rating} / 5
+                        </h3>
+                        <span className="text-sm text-gray-500">
+                          ({product.reviews.totalReviews} reviews)
+                        </span>
+                      </div>
+
+                      <div>
+                        {product.reviews.reviewList.map((review, index) => (
+                          <div key={index} className="border-b py-3">
+                            <p className="font-semibold">{review.user}</p>
+                            <p className="text-sm text-gray-600">{review.comment}</p>
+                            <span className="text-sm text-gray-400">
+                              Rating: {review.rating} / 5
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    <p>No reviews yet.</p>
+                  )}
+
+                  <div className="mt-8">
+                    <span className="font-bold">Available Sizes:</span>
+                    <ul className="list-disc pl-4 gap-10 flex">
+                      {product.extraDetails.sizes.map((size) => (
+                        <li key={size}>{size}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-4">
+                    <span className="font-bold">Available Colors:</span>
+                    <ul className="list-disc pl-4 gap-10 flex">
+                      {product.extraDetails.availableColors.map((color) => (
+                        <li key={color}>{color}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-4">
+                    <span className="font-bold">Care Instructions:</span>
+                    <p>{product.extraDetails.careInstructions}</p>
+                  </div>
+                </div>
+              </TabsContent>
+            </Tabs>
+
+            <Buttonn
+              productImage={`Hoody${params.Id}`}
+              productDescription={product.description}
+              productName={product.title}
+              productPrice={pricee}
+              quantity={quantity}
+              size={size}
+            />
+          </div>
         ) : (
-          <>no product</>
+          <p>No product available.</p>
         )}
       </div>
     </div>
@@ -114,6 +201,136 @@ let Hoody="Hoody"
 };
 
 export default ProductDetailPage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// "use client";
+// import React, { useState, useEffect } from "react";
+// import Buttonn from "../../AddCartButton/page";
+// import Image from "next/image";
+// import Loader from "@/app/Client/Loader/page";
+
+// const ProductDetailPage = ({ params }) => {
+//   const [quantity, setQuantity] = useState(1);
+//   const [size, setSize] = useState("Medium");
+//   const [product, setProduct] = useState(null);
+//   const [loading, setLoading] = useState(true); 
+//   const [error, setError] = useState(null); 
+//   useEffect(() => {
+//     const fetchProductDetails = async () => {
+//       try {
+//         const response = await fetch('/Server/ProductDetials', {
+//           method: 'POST',
+//           headers: {
+//             'Content-Type': 'application/json',
+//           },
+//           body: JSON.stringify({ productName: Hoody }), // Sending the id as part of the body
+//         });        const data = await response.json();
+//         let id=params.Id
+//   console.log(data[id-1]);
+
+  
+//         if (response.ok) {
+//           setProduct(data[id-1]); 
+//         } else {
+//           setError(data.error || "Something went wrong."); 
+//         }
+//       } catch (error) {
+//         setError("Error fetching product details.");
+//       } finally {
+//         setLoading(false); 
+//       }
+//     };
+
+//     fetchProductDetails(); // Call the function to fetch data
+//   }, [params.id]);
+//   const increaseQuantity = () => setQuantity((prev) => prev + 1);
+//   const decreaseQuantity = () => {
+//     if (quantity > 1) setQuantity((prev) => prev - 1);
+//   };
+
+//   // Handle size selection
+//   const handleSizeChange = (event) => setSize(event.target.value);
+// let Hoody="Hoody"
+//   // Show loading state or error
+//   if (loading) {
+//     return <div className=" h-screen flex  justify-center items-center"><Loader/></div>;
+//   }
+
+//   return (
+//     <div className="h-full md:h-screen flex justify-center items-center left-1/2 top-1/2 w-full">
+//       <div className="flex flex-col md:flex-row relative top-44 md:top-8 justify-center items-center w-screen gap-7 md:gap-10 lg:gap-24">
+//         <Image
+//           src={`./Images/${Hoody}${params.Id}.PNG`} 
+//           alt={product.title}
+//           className="w-full max-w-xs md:max-w-md lg:max-w-lg rounded-lg border-4 bg-slate-100 p-4"
+//           width={300}
+//           height={400}
+//           priority
+//         />
+//         {product ? (
+//           <>
+//             {" "}
+//             <div className="ml-8 py-4 flex flex-col justify-center w-96">
+//               <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
+//               <h2 className="text-md mb-4">
+//                 Price: <span className="underline">{product.price}</span>
+//               </h2>
+//               <p className="mb-4">{product.description}</p>
+
+//               <div className="mb-4">
+//                 <label className="block mb-2 font-semibold">Size:</label>
+//                 <select
+//                   value={size}
+//                   onChange={handleSizeChange}
+//                   className="border rounded px-4 py-2"
+//                 >
+//                   <option value="Small">Small</option>
+//                   <option value="Medium">Medium</option>
+//                   <option value="Large">Large</option>
+//                   <option value="X-Large">X-Large</option>
+//                 </select>
+//               </div>
+
+//               <div className="flex items-center mb-4">
+//                 <button
+//                   onClick={decreaseQuantity}
+//                   className="border rounded-l px-4 py-2"
+//                 >
+//                   -
+//                 </button>
+//                 <span className="px-4">{quantity}</span>
+//                 <button
+//                   onClick={increaseQuantity}
+//                   className="border rounded-r px-4 py-2"
+//                 >
+//                   +
+//                 </button>
+//               </div>
+
+//               <Buttonn product={product} quantity={quantity} size={size} />
+//             </div>
+//           </>
+//         ) : (
+//           <>no product</>
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ProductDetailPage;
 
 // "use client";
 // import React, { useState, useEffect } from 'react';

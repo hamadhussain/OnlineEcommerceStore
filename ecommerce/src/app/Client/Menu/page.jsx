@@ -212,7 +212,7 @@ export default function Menu({ color }) {
               <Button
                 variant="none"
                 className="text-white capitalize"
-                onClick={() => signIn()}
+                onClick={() => signIn("google")}
               >
                 Login
               </Button>

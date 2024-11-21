@@ -57,8 +57,10 @@ export default function Home() {
     name.toLowerCase().includes(inputValue.toLowerCase())
   );
   return (
-    <div className=" overflo-hidden bg-gradient-to-r from-green-50 via-teal-50 to-aqua-100
-">
+    <div
+      className=" overflo-hidden bg-gradient-to-r from-green-50 via-teal-50 to-aqua-100
+"
+    >
       {/* <div className="body  ">
         <div
           className={`absolute inset-0 bg-black transition-all duration-700 ${
@@ -128,33 +130,34 @@ export default function Home() {
           <header className="flex bg-gadient-to-br from-red-700 to-red-300 navb  backdrop-brightnes py-4 text-whte z-20 bg-whte bg-fxed fied w-scree items-center justify-between px-6 ">
             <div className="gap-11 flex items-center">
               <div className="flex items-center  gap-1 text3xl">
-              <Link href="/">
-            <h1 className="text- text-xl font-bold flex items-center  gap-2">
-            <GiSleevelessJacket className="border-2 text-3xl rounded-full" />
-              M.J</h1>
-              </Link> 
+                <Link href="/">
+                  <h1 className="text- text-xl font-bold flex items-center  gap-2">
+                    <GiSleevelessJacket className="border-2 text-3xl rounded-full" />
+                    M.J
+                  </h1>
+                </Link>
               </div>
               <nav className="hidden md:flex space-x-12 uppercase">
-                <Navigation />  </nav>
+                <Navigation />{" "}
+              </nav>
             </div>
 
             <div className="flex items-center space-x-6">
-
               <div className="flex items-center  gap-4 relative">
-              <Link href="/login">
-              <button className="bg-blue-500 text-white p-1 px-2 rounded hover:bg-blue-600">
-                Login
-              </button>
-            </Link>
-            <input
-              className="border-b border-gray-300 h-8 p-1 px-2 py-1 rounded mr-2"
-              id="textInput"
-              type="text"
-              value={inputValue}
-              onChange={handleChange}
-              placeholder="Search Products..."
-              onFocus={() => setFocus(true)}
-            />
+                <Link href="/login">
+                  <button className="bg-blue-500 text-white p-1 px-2 rounded hover:bg-blue-600">
+                    Login
+                  </button>
+                </Link>
+                <input
+                  className="border-b border-gray-300 h-8 p-1 px-2 py-1 rounded mr-2"
+                  id="textInput"
+                  type="text"
+                  value={inputValue}
+                  onChange={handleChange}
+                  placeholder="Search Products..."
+                  onFocus={() => setFocus(true)}
+                />
                 {inputFocus && inputValue && (
                   <div
                     ref={dropdownRef}
@@ -194,7 +197,7 @@ export default function Home() {
           </header>
         </div>
 
-<Header/>
+        <Header />
         {/* <div className="h-screen overflow-hidden text-white flex flex-col brightness-200 relative px-4 lg:px-36 space-y-4 items-cener justify-center">
           <h1 className="text-4xl md:text-7xl lg:text-8xl w-full md:w-[700px] font-bold mb-4 leading-relaxed text-center md:text-start">
             Raining Offers For Winter!
@@ -222,9 +225,6 @@ export default function Home() {
             
           </div>
         </div> */}
-
-
-
       </div>
 
       <div className="  z-10">
